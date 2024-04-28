@@ -44,10 +44,14 @@ class Data{
         int mes;
         int ano;
         void arrumar(std::string);
+        bool verifica_dia();
+        bool verifica_mes();
+        bool verifica_ano_bissexto();
     public:
-        Data();
         void setData(std::string);
         std::string getData();
+
+
 
 };
 

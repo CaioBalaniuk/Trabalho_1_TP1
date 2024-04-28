@@ -175,65 +175,100 @@ string CPF::getCPF(){
 
 //METODOS CLASSE DATA
 
-Data::Data(){
 
-}
-
-
-void Data::arrumar(string d1){
-    string apoiodia="";
+void Data::arrumar(string d1){      //metodo que verifica se todos os caracteres, além dos hifens, são númericos e ainda arruma as variavies dia mes e ano
+    string apoiodia="";             // as quais são usadas mais na frente no codigo;
     string apoiomes="";
     string apoioano="";
     for (int i=0;i<10;i+=1){
-        if (i==0 || i==1){
+        if (i==0 || i==1){         //pega o dia
             apoiodia+=d1[i];
 
         }
-        else if (i==3 || i==4){
+        else if (i==3 || i==4){  // pega o mes
             apoiomes+=d1[i];
         }
-        else if (i==6 || i==7 || i==8 ||i==9){
+        else if (i==6 || i==7 || i==8 ||i==9){   //pega o ano
             apoioano+=d1[i];
         };
     };
-        dia=stoi(apoiodia);
-        mes=stoi(apoiomes);
-        ano=stoi(apoioano);
+        dia=stoi(apoiodia);      //transforma a string possuindo o dia em um inteiro, se o a string não for composta apenas por caracteres númericos, vai dar erro.
+        mes=stoi(apoiomes);      // transforma a string possuindo o mês em um inteiro, a explicação a cima se encaixa aqui também;
+        ano=stoi(apoioano);      // faz a mesma coisa das outras mas com o ano;
 };
 
-/*void Data::setData(string d){
+bool Data::verifica_ano_bissexto() {
+    for (int i = 2000; i <= 2100; i += 4) {         // verifica se o ano é bissexto, retornando true se for e false se não for;
+        if (ano == i) {
+            return true;
+        };
+    };
+    return false;
+}
+
+bool Data::verifica_mes() {
+    int tabela_sim[] = {1, 3, 5, 7, 8, 10, 12};   //verifica se o mês possui 31 dias ou não, retorna true se possuir e false se não possuir;
+    int tabela_nao[] = {2, 4, 6, 9, 11};
+    for (int i : tabela_sim) {
+        if (i == mes) {
+            return true;
+        }
+    };
+    for (int i1 : tabela_nao) {
+        if (i1 == mes) {
+            return false;
+        }
+    };
+}
+
+bool Data::verifica_dia() {   // verifica se o dia é valido com base seu mês e o ano;
+    bool m = verifica_mes();
+    bool b = verifica_ano_bissexto();
+    if (dia > 00 && dia < 31 && mes != 2) {   // se for qualquer dia abaixo de 31 e diferente do mês 2, sempre estará certo;
+        return true;
+    } else if (dia == 29 && mes == 2 && b == true) {  //se for dia 29 e mês 2, mas for ano bissexto, está certo;
+        return true;
+    } else if (dia == 31 && m == true) {  //verifica se o mes pode ter 31 dias ou não com base na função implementada a cima;
+        return true;                                                  // se for dia 31 e for um mês que possua 31 dias, está certo;
+    } else if (dia > 00 && dia<29 && mes == 2) {
+        return true;            // se for mês 2, mas qualquer dia abaixo de 29, estará sempre correto;
+    } else {
+        return false;   //se não se aplicar a nenhum dos casos corretos, estará sempre errado;
+    }
+}
+
+void Data::setData(string d){
     bool juri=true;
-    if (d[2]!='-' || d[5]!= '-'){
+    if (d[2]!='-' || d[5]!= '-'){   //verifica se os hifés existem e estão no lugar certo
         juri=false;
     };
-    if (d.length()!=10){
+    if (d.length()!=10){   //verifica se a string possui o numero correto de caracteres;
         juri=false;
     };
     try{
         arrumar(d);
-    } catch (const invalid_argument& e){
+    } catch (const invalid_argument& e){   // arruma as variaveis dia, mes e ano, além de verificar se os caracteres são todos númericos;
         juri=false;
     };
-    if (dia<0 || dia>31){
+    if (mes<1 || mes>12){  //verifica se o mês existe;
         juri=false;
     };
-    if (mes<1 || mes>12){
+    if (ano<2000 || ano>2100){  //verifica se o ano está no intervalo correto;
         juri=false;
     };
-    if (ano<2000 || ano>2100){
-        juri=false;
-    };
-    if mes
+    if (verifica_dia() == false) {  //verifica se o dia é válido;
+        juri = false;
+    }
 
-    if (juri==true){
+    if (juri==true){   // se nenhuma das possibilidades a cima foi encontrada, o juri permanecerá true e data será atribuida.
         data=d;
     }
     else {
-        throw invalid_argument ("Data invalida.");
+        throw invalid_argument ("Data invalida.");  // se qualquer uma das possibilidades a cima for encontrada, será lançada exceção;
     };
 
 
-};*/
+};
 
 string Data::getData(){
     return data;

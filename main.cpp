@@ -6,7 +6,7 @@
 using namespace std;
 
 
-//teste classe  CodigoPagamento.
+//teste classes
 
 int main(){
     /*CodigoPagamento teste ;
@@ -27,7 +27,7 @@ int main(){
         cout<<"Seu codigo e: "<<teste1.getCodigoT()<<endl;
     } catch (const invalid_argument& e){
         cout<<e.what()<<endl;
-    };*/
+    };
 
     CPF teste2;
     string c;
@@ -37,9 +37,9 @@ int main(){
         cout<<"Seu CPF e: "<<teste2.getCPF()<<endl;
     } catch (const invalid_argument& e){
         cout<<e.what()<<endl;
-    };
+    };*/
 
-    /*Data teste3;
+    Data teste3;
     string d;
     cin>>d;
     try{
@@ -47,7 +47,7 @@ int main(){
         cout<<"A data e: "<<teste3.getData()<<endl;
     } catch(const invalid_argument& e){
         cout<<e.what()<<endl;
-    };*/
+    };
     return 0;
 
 
