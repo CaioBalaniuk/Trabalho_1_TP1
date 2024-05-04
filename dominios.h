@@ -12,9 +12,7 @@ class CodigoPagamento{
     CodigoPagamento(int);
     void setCodigoP(int);
     int getCodigoP();
-
 };
-
 
 class CodigoTitulo{
     private:
@@ -26,7 +24,6 @@ class CodigoTitulo{
         std::string getCodigoT();
 };
 
-
 class CPF{
     private:
         std::string cpf;
@@ -36,9 +33,7 @@ class CPF{
         CPF(std::string);
         void setCPF(std::string);
         std::string getCPF();
-
 };
-
 
 class Data{
     private:
@@ -53,10 +48,9 @@ class Data{
     public:
         void setData(std::string);
         std::string getData();
-
-
-
 };
+
+
 
 //Classe Percentual
 class Percentual{
@@ -93,6 +87,36 @@ public:
     Nome(string m=" ");
     void setNome(const string& a);
     string getNome();
+};
+
+
+
+
+class Setor {
+private:
+    string area; // declarando a variavel do valor do dinheiro que será em float porque é um valor em reais
+
+public:
+    void setSetor(string consultadearea);  // o método é atribuir um valor caso ele esteja entre 0 e 1000000 e retornar um erro caso venha uma exceção, e para isso se deve utilizar o método set
+    string getSetor(); // o método get é usado para retornar um valor no output
+}; 
+
+class Estado {
+private:
+    string status; // a variavel será em string pois são 3 nomes de 3 estados
+
+public:
+    void setEstado(string statusConfirmation); // método para definir o status (estado), verificando se é um dos valores permitidos, e emitindo um erro caso seja uma exceção, através do if
+    string getEstado(); // método get para obter o "status"
+};
+
+class Dinheiro {
+private:
+    float valor; // declarando a variavel do valor do dinheiro que será em float porque é um valor em reais
+
+public:
+    void setDinheiro(float $); // o método é atribuir um valor caso ele esteja entre 0 e 1000000 e retornar um erro caso venha uma exceção, e para isso se deve utilizar o método set
+    float getDinheiro(); // o método get é usado para retornar um valor no output
 };
 
 #endif // DOMINIOS_H_INCLUDED
