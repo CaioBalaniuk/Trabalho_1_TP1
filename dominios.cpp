@@ -1,6 +1,9 @@
 #include <iostream>
 #include "dominios.h"
 #include <string>
+#include <map>
+#include <stdexcept>
+#include <sstream>
 
 using namespace std;
 string alfabeto=("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
@@ -36,17 +39,17 @@ void CodigoTitulo::setCodigoT(string b){
     bool juri =true;
     int contador;
     apoio+=b[0];
-    apoio+=b[1];           //apoio È uma string que possui os 3 primeiros caracteres do codigo a fim de tornar mais facil a checagem
+    apoio+=b[1];           //apoio √© uma string que possui os 3 primeiros caracteres do codigo a fim de tornar mais facil a checagem
     apoio+=b[2];
     if (apoio=="CDB" ||apoio=="CRA" ||apoio== "CRI" || apoio=="LCA" || apoio=="LCI" || apoio=="DEB"){ //checando se os 3 primeiros caracteres coincidem com as normas
-        if (b.length()==11){ //checando se o codigo possui o n˙mero necessario de caracteres
+        if (b.length()==11){ //checando se o codigo possui o n√∫mero necessario de caracteres
             for (char i : b){
                 contador=0;
-                for (int k=0;k<(alfabeto.length());k+=1){  // checando se todos os caracteres s„o letras maiusculas
+                for (int k=0;k<(alfabeto.length());k+=1){  // checando se todos os caracteres s√£o letras maiusculas
                     if (i==alfabeto[k]){
                         break;
                     }
-                    else if (i>='0' && i<='9'){  //apÛs checar se os caracteres n„o s„o letras maiusculas, checando se eles s„o numÈricos
+                    else if (i>='0' && i<='9'){  //ap√≥s checar se os caracteres n√£o s√£o letras maiusculas, checando se eles s√£o num√©ricos
                         break;
                     };
                     contador+=1;
@@ -56,8 +59,8 @@ void CodigoTitulo::setCodigoT(string b){
                     break;
                 };
             };
-            if (juri==true){ // se o juri permaneceu true, significa que n„o houve problemas, ou seja todos os caracteres est„o de acordo com as normas,
-            codigo=b;        // logo o codigo È valido
+            if (juri==true){ // se o juri permaneceu true, significa que n√£o houve problemas, ou seja todos os caracteres est√£o de acordo com as normas,
+            codigo=b;        // logo o codigo √© valido
             }
             else{
                 throw invalid_argument("Codigo invalido.");
@@ -101,7 +104,7 @@ string CPF::calcula_ultimos2(string c2){  //metodo apenas para calcular os ultim
     result=result%11;
     if (result>=2){
         result=11-result;
-        string apoi=to_string(result);          // adicionando ‡ resposta o valor relacionado ao primeiro dos ultimos 2 digitos
+        string apoi=to_string(result);          // adicionando √† resposta o valor relacionado ao primeiro dos ultimos 2 digitos
         resp+=apoi;
     }
     else{
@@ -110,7 +113,7 @@ string CPF::calcula_ultimos2(string c2){  //metodo apenas para calcular os ultim
     };
     result=0;
     for (int p1=0;p1<13;p1+=1){
-        if (c2[p1]!='.' && c2[p1]!='-'){               //somando agora os 9 primeiros digitos com seus pesos, mas cm a adiÁ„o do digito calculado a cima
+        if (c2[p1]!='.' && c2[p1]!='-'){               //somando agora os 9 primeiros digitos com seus pesos, mas cm a adi√ß√£o do digito calculado a cima
             m=c2[p1];
             m=m-48;
             result+=(peso2*m);
@@ -122,7 +125,7 @@ string CPF::calcula_ultimos2(string c2){  //metodo apenas para calcular os ultim
         result=11-result;
         string apoi=to_string(result);
         resp+=apoi;
-    }                                            //adicionando o ultimo digito ‡ resposta
+    }                                            //adicionando o ultimo digito √† resposta
     else{
         string apoi=to_string(0);
         resp+=apoi;
@@ -131,38 +134,38 @@ string CPF::calcula_ultimos2(string c2){  //metodo apenas para calcular os ultim
 };
 
 void CPF::setCPF(string c){
-    apoio+=c[12];             //criando uma variavel que guarde os ultimos 2 digitos do cpf, para comparaÁ„o com o calculo, a fim de verificar se È valido
+    apoio+=c[12];             //criando uma variavel que guarde os ultimos 2 digitos do cpf, para compara√ß√£o com o calculo, a fim de verificar se √© valido
     apoio+=c[13];
     bool juri=true;
-    if (c.length()!=14){         //verificando se o a string colocada possuÌ o numero minimo de caracteres a fim de ser valÌda
+    if (c.length()!=14){         //verificando se o a string colocada possu√≠ o numero minimo de caracteres a fim de ser val√≠da
         juri=false;
     };
     for (int i=0;i<c.length();i+=1){
         if (i==11){
             if (c[i]!='-'){
-                juri=false;      //verificando se o '-' est· no lugar certo
+                juri=false;      //verificando se o '-' est√° no lugar certo
                 break;
             };
         }
         else if (i==3 || i==7){
-            if (c[i]!='.'){          //verificando se os '.' est„o no lugar certo
+            if (c[i]!='.'){          //verificando se os '.' est√£o no lugar certo
                 juri=false;
                 break;
             };
         }
         else if (c[i]<='0' && c[i]>='9'){
-            juri=false;                         //verificando se todos os caracteres s„o numeros
+            juri=false;                         //verificando se todos os caracteres s√£o numeros
             break;
         };
     };
     if (apoio != calcula_ultimos2(c)){      //chamando o metodo implementado a cima a fim de validar os ultimos 2 digitos
         juri=false;
     };
-    if (juri==true){      // se todas as condiÁıes foram satisfeitas, o cpf ser· valido
+    if (juri==true){      // se todas as condi√ß√µes foram satisfeitas, o cpf ser√° valido
         cpf=c;
     }
     else{
-        throw invalid_argument ("CPF invalido."); //se alguma das condiÁıes n„o foi satisfeita o erro ser· lanÁado
+        throw invalid_argument ("CPF invalido."); //se alguma das condi√ß√µes n√£o foi satisfeita o erro ser√° lan√ßado
     };
 };
 
@@ -176,8 +179,8 @@ string CPF::getCPF(){
 //METODOS CLASSE DATA
 
 
-void Data::arrumar(string d1){      //metodo que verifica se todos os caracteres, alÈm dos hifens, s„o n˙mericos e ainda arruma as variavies dia mes e ano
-    string apoiodia="";             // as quais s„o usadas mais na frente no codigo;
+void Data::arrumar(string d1){      //metodo que verifica se todos os caracteres, al√©m dos hifens, s√£o n√∫mericos e ainda arruma as variavies dia mes e ano
+    string apoiodia="";             // as quais s√£o usadas mais na frente no codigo;
     string apoiomes="";
     string apoioano="";
     for (int i=0;i<10;i+=1){
@@ -192,13 +195,13 @@ void Data::arrumar(string d1){      //metodo que verifica se todos os caracteres
             apoioano+=d1[i];
         };
     };
-        dia=stoi(apoiodia);      //transforma a string possuindo o dia em um inteiro, se o a string n„o for composta apenas por caracteres n˙mericos, vai dar erro.
-        mes=stoi(apoiomes);      // transforma a string possuindo o mÍs em um inteiro, a explicaÁ„o a cima se encaixa aqui tambÈm;
+        dia=stoi(apoiodia);      //transforma a string possuindo o dia em um inteiro, se o a string n√£o for composta apenas por caracteres n√∫mericos, vai dar erro.
+        mes=stoi(apoiomes);      // transforma a string possuindo o m√™s em um inteiro, a explica√ß√£o a cima se encaixa aqui tamb√©m;
         ano=stoi(apoioano);      // faz a mesma coisa das outras mas com o ano;
 };
 
 bool Data::verifica_ano_bissexto() {
-    for (int i = 2000; i <= 2100; i += 4) {         // verifica se o ano È bissexto, retornando true se for e false se n„o for;
+    for (int i = 2000; i <= 2100; i += 4) {         // verifica se o ano √© bissexto, retornando true se for e false se n√£o for;
         if (ano == i) {
             return true;
         };
@@ -207,7 +210,7 @@ bool Data::verifica_ano_bissexto() {
 }
 
 bool Data::verifica_mes() {
-    int tabela_sim[] = {1, 3, 5, 7, 8, 10, 12};   //verifica se o mÍs possui 31 dias ou n„o, retorna true se possuir e false se n„o possuir;
+    int tabela_sim[] = {1, 3, 5, 7, 8, 10, 12};   //verifica se o m√™s possui 31 dias ou n√£o, retorna true se possuir e false se n√£o possuir;
     int tabela_nao[] = {2, 4, 6, 9, 11};
     for (int i : tabela_sim) {
         if (i == mes) {
@@ -221,25 +224,25 @@ bool Data::verifica_mes() {
     };
 }
 
-bool Data::verifica_dia() {   // verifica se o dia È valido com base seu mÍs e o ano;
+bool Data::verifica_dia() {   // verifica se o dia √© valido com base seu m√™s e o ano;
     bool m = verifica_mes();
     bool b = verifica_ano_bissexto();
-    if (dia > 00 && dia < 31 && mes != 2) {   // se for qualquer dia abaixo de 31 e diferente do mÍs 2, sempre estar· certo;
+    if (dia > 00 && dia < 31 && mes != 2) {   // se for qualquer dia abaixo de 31 e diferente do m√™s 2, sempre estar√° certo;
         return true;
-    } else if (dia == 29 && mes == 2 && b == true) {  //se for dia 29 e mÍs 2, mas for ano bissexto, est· certo;
+    } else if (dia == 29 && mes == 2 && b == true) {  //se for dia 29 e m√™s 2, mas for ano bissexto, est√° certo;
         return true;
-    } else if (dia == 31 && m == true) {  //verifica se o mes pode ter 31 dias ou n„o com base na funÁ„o implementada a cima;
-        return true;                                                  // se for dia 31 e for um mÍs que possua 31 dias, est· certo;
+    } else if (dia == 31 && m == true) {  //verifica se o mes pode ter 31 dias ou n√£o com base na fun√ß√£o implementada a cima;
+        return true;                                                  // se for dia 31 e for um m√™s que possua 31 dias, est√° certo;
     } else if (dia > 00 && dia<29 && mes == 2) {
-        return true;            // se for mÍs 2, mas qualquer dia abaixo de 29, estar· sempre correto;
+        return true;            // se for m√™s 2, mas qualquer dia abaixo de 29, estar√° sempre correto;
     } else {
-        return false;   //se n„o se aplicar a nenhum dos casos corretos, estar· sempre errado;
+        return false;   //se n√£o se aplicar a nenhum dos casos corretos, estar√° sempre errado;
     }
 }
 
 void Data::setData(string d){
     bool juri=true;
-    if (d[2]!='-' || d[5]!= '-'){   //verifica se os hifÈs existem e est„o no lugar certo
+    if (d[2]!='-' || d[5]!= '-'){   //verifica se os hif√©s existem e est√£o no lugar certo
         juri=false;
     };
     if (d.length()!=10){   //verifica se a string possui o numero correto de caracteres;
@@ -247,24 +250,24 @@ void Data::setData(string d){
     };
     try{
         arrumar(d);
-    } catch (const invalid_argument& e){   // arruma as variaveis dia, mes e ano, alÈm de verificar se os caracteres s„o todos n˙mericos;
+    } catch (const invalid_argument& e){   // arruma as variaveis dia, mes e ano, al√©m de verificar se os caracteres s√£o todos n√∫mericos;
         juri=false;
     };
-    if (mes<1 || mes>12){  //verifica se o mÍs existe;
+    if (mes<1 || mes>12){  //verifica se o m√™s existe;
         juri=false;
     };
-    if (ano<2000 || ano>2100){  //verifica se o ano est· no intervalo correto;
+    if (ano<2000 || ano>2100){  //verifica se o ano est√° no intervalo correto;
         juri=false;
     };
-    if (verifica_dia() == false) {  //verifica se o dia È v·lido;
+    if (verifica_dia() == false) {  //verifica se o dia √© v√°lido;
         juri = false;
     }
 
-    if (juri==true){   // se nenhuma das possibilidades a cima foi encontrada, o juri permanecer· true e data ser· atribuida.
+    if (juri==true){   // se nenhuma das possibilidades a cima foi encontrada, o juri permanecer√° true e data ser√° atribuida.
         data=d;
     }
     else {
-        throw invalid_argument ("Data invalida.");  // se qualquer uma das possibilidades a cima for encontrada, ser· lanÁada exceÁ„o;
+        throw invalid_argument ("Data invalida.");  // se qualquer uma das possibilidades a cima for encontrada, ser√° lan√ßada exce√ß√£o;
     };
 
 
@@ -274,6 +277,164 @@ string Data::getData(){
     return data;
 };
 
+//Metodos da Classe Percentual
+Percentual::Percentual(int d) : percentual(d) {}
+
+void Percentual::setPercentual(int a){
+    if (a<0 || a>100) {
+        throw invalid_argument("Percentual invalido.");
+    }
+    percentual=a;
+}
+
+int Percentual::getPercentual() const{
+    return percentual;
+}
+
+//Metodos da Classe Senha
+
+Senha::Senha(string d) : senha(d) {}
+
+bool Senha::verificador_duplica(const string& password) {
+    map<char, int> contador;
+    for (char c : password) {
+        contador[c]++;
+        if(contador[c] > 1) {
+            return true;
+        }
+    }
+    return false;
+}
+
+bool Senha::verificador_ordem(const string& password) {
+    if (password.size() < 2) return false;
+        bool crescente = true;
+        bool decrescente = true;
+        for (size_t i = 0; i < password.size() - 1; ++i) {
+            crescente &= password[i] < password[i+1];
+            decrescente &= password[i] > password[i+1];
+        }
+        return crescente || decrescente;
+}
+
+void Senha::setSenha(const string& a) {
+    string numeros = "0123456789";
+    if (a.length()<=6){ //Verifica se tem no maximo 6 digitos
+        if (a[0] != '0'){ //Verifica se o primeiro d√≠gito eh diferente de 0
+            int opera = 0;
+            for (size_t i=0; i<a.length(); ++i){
+                if(numeros.find(a[i])==std::string::npos){
+                    opera++;
+                }
+            }
+            if (opera==0) { //Verifica se todos digitos sao numericos
+                if (verificador_duplica(a)==false && verificador_ordem(a)==false){
+                    senha=a;
+                }
+                else{
+                   throw invalid_argument ("Senha invalida.");
+                }
+            }
+            else {
+                throw invalid_argument ("Senha invalida.");
+            }
+        }
+        else{
+            throw invalid_argument ("Senha invalida.");
+        }
+    }
+    else{
+        throw invalid_argument ("Senha invalida.");
+    }
+
+}
+
+string Senha::getSenha(){
+    return senha;
+}
+//Metodos da Classe Nome
+Nome::Nome(string m) : nome(m) {}
+
+bool Nome::verificador_caracteres(const string& name){
+    if (name.length()>=3 && name.length()<=10){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
+bool Nome::verificador_letras(const string& name){
+    string letras="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+    int opera=0;
+    for (size_t i=0;i<name.length();i++){
+        if (letras.find(name[i])==std::string::npos){
+            opera++;
+        }
+    }
+    if (opera==0){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
+bool Nome::verificador_maiusculo(const string& name){
+    if(!name.empty()){
+        return std::isupper(name[0]);
+    }
+    return false;
+}
+
+vector<string> Nome::separador_strings(const string& name){
+    vector<string> partes;
+    istringstream iss(name);
+    string parte;
+
+    while (getline(iss,parte,' ')){
+        partes.push_back(parte);
+    }
+
+    return partes;
+}
+
+
+void Nome::setNome(const string& a){
+    int spaces = 0;
+    for (char c : a){
+        if (c==' '){
+            spaces++;
+        }
+    }
+    if (spaces>1){
+        throw invalid_argument("Nome invalido.");
+    }
+    else{
+        if (spaces==0){
+            if (verificador_caracteres(a)==true && verificador_letras(a)==true && verificador_maiusculo(a)==true){
+                nome=a;
+            }
+            else{
+                throw invalid_argument("Nome invalido.");
+            }
+        }
+        if (spaces==1){
+            vector<string>lista=separador_strings(a);
+            if (verificador_caracteres(lista[0])==true && verificador_letras(lista[0])==true && verificador_maiusculo(lista[0])==true && verificador_caracteres(lista[1])==true && verificador_letras(lista[1])==true && verificador_maiusculo(lista[1])==true){
+                    nome=a;
+            }
+            else{
+                throw invalid_argument("Nome invalido.");
+            }
+        }
+
+    }
+}
+
+string Nome::getNome(){
+    return nome;
+}
 
 
 
