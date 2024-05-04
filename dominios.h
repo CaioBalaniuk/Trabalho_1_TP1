@@ -1,6 +1,9 @@
 #include <string>
 #ifndef DOMINIOS_H_INCLUDED
 #define DOMINIOS_H_INCLUDED
+#include <vector>
+
+using namespace std;
 
 class CodigoPagamento{
  private:
@@ -53,6 +56,43 @@ class Data{
 
 
 
+};
+
+//Classe Percentual
+class Percentual{
+private:
+    int percentual;
+public:
+    Percentual(int d=0);
+    void setPercentual(int a);
+    int getPercentual() const;
+};
+
+//Classe Senha
+class Senha{
+private:
+    string senha;
+    bool verificador_duplica(const string& password);
+    bool verificador_ordem(const string& password);
+public:
+    Senha(string d=" ");
+    void setSenha(const string& a);
+    string getSenha();
+};
+
+//Classe Nome
+class Nome{
+private:
+    string nome;
+    bool verificador_caracteres(const string& name);
+    bool verificador_letras(const string& name);
+    bool verificador_maiusculo(const string& name);
+    vector<string> separador_strings(const string& name);
+
+public:
+    Nome(string m=" ");
+    void setNome(const string& a);
+    string getNome();
 };
 
 #endif // DOMINIOS_H_INCLUDED
