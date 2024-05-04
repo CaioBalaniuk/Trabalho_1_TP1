@@ -291,8 +291,8 @@ int Percentual::getPercentual() const{
     return percentual;
 }
 
-//Metodos da Classe Senha
 
+//Metodos da Classe Senha
 Senha::Senha(string d) : senha(d) {}
 
 bool Senha::verificador_duplica(const string& password) {
@@ -352,6 +352,8 @@ void Senha::setSenha(const string& a) {
 string Senha::getSenha(){
     return senha;
 }
+
+
 //Metodos da Classe Nome
 Nome::Nome(string m) : nome(m) {}
 
@@ -437,9 +439,57 @@ string Nome::getNome(){
 }
 
 
+//Implementacao metodos Setor
+Setor::Setor(string a=" "){
+    area=a;
+}
+
+void Setor::setSetor(string consultadearea) { 
+        if (consultadearea == "Agricultura" || consultadearea == "Construção civil" || consultadearea == "Energia" || consultadearea == "Finanças" || consultadearea == "Imobiliário" || consultadearea == "Papel e celulose" || consultadearea == "Pecuária" || consultadearea == "Química e petroquímica" || consultadearea == "Metalurgia e siderurgia" || consultadearea == "Mineração") {
+            area = consultadearea;
+        } else {
+            throw invalid_argument("Setor invalido.");
+        }
+}
+
+string Setor::getSetor(){
+    return area;
+}
 
 
+//Implementacao metodos Estado
+Estado::Estado(string a= " "){
+    status=a;
+}
+
+void Estado::setEstado(string statusConfirmation){ 
+        if (statusConfirmation == "Previsto" || statusConfirmation == "Liquidado" || statusConfirmation == "Inadimplente") {
+            status = statusConfirmation;
+        } else {
+            throw invalid_argument("Erro: Estado Inexistente!");
+        }
+}
+
+string Estado::getEstado(){
+    return status;
+}
 
 
+//Implementacao metodos Dinheiro
+Dinheiro::Dinheiro(float a){
+    valor=a;
+}
+
+void Dinheiro::setDinheiro(float $) { 
+        if ($ >= 0 && $ <= 1000000) {  // o if verifica se o valor está dentro do intervalo permitido (0 a 1000000) e atribui o valor se estiver dentro do intervalo
+            valor = $;
+        } else {
+            throw invalid_argument("Dinheiro invalido.");
+        }
+}
+
+float Dinheiro::getDinheiro() { 
+        return valor;
+}
 
 
