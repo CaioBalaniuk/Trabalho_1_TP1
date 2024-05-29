@@ -5,6 +5,7 @@
 
 using namespace std;
 
+//Classe Codigo Pagamento
 class CodigoPagamento{
  private:
     int codigo;
@@ -13,7 +14,7 @@ class CodigoPagamento{
     void setCodigoP(int);
     int getCodigoP();
 };
-
+// Classe Codigo Titulo
 class CodigoTitulo{
     private:
         std::string codigo;
@@ -23,7 +24,7 @@ class CodigoTitulo{
         void setCodigoT(std::string);
         std::string getCodigoT();
 };
-
+//Classe CPF
 class CPF{
     private:
         std::string cpf;
@@ -34,7 +35,7 @@ class CPF{
         void setCPF(std::string);
         std::string getCPF();
 };
-
+// Classe Data
 class Data{
     private:
         std::string data;
