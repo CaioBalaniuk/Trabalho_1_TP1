@@ -98,15 +98,17 @@ private:
     string area; // declarando a variavel do valor do dinheiro que será em float porque é um valor em reais
 
 public:
+    Setor(string);
     void setSetor(string consultadearea);  // o método é atribuir um valor caso ele esteja entre 0 e 1000000 e retornar um erro caso venha uma exceção, e para isso se deve utilizar o método set
     string getSetor(); // o método get é usado para retornar um valor no output
-}; 
+};
 
 class Estado {
 private:
     string status; // a variavel será em string pois são 3 nomes de 3 estados
 
 public:
+    Estado(string);
     void setEstado(string statusConfirmation); // método para definir o status (estado), verificando se é um dos valores permitidos, e emitindo um erro caso seja uma exceção, através do if
     string getEstado(); // método get para obter o "status"
 };
@@ -116,8 +118,10 @@ private:
     float valor; // declarando a variavel do valor do dinheiro que será em float porque é um valor em reais
 
 public:
+    Dinheiro(float);
     void setDinheiro(float $); // o método é atribuir um valor caso ele esteja entre 0 e 1000000 e retornar um erro caso venha uma exceção, e para isso se deve utilizar o método set
     float getDinheiro(); // o método get é usado para retornar um valor no output
 };
 
 #endif // DOMINIOS_H_INCLUDED
+
