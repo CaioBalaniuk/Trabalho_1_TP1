@@ -6,7 +6,7 @@
 
 using namespace std;
 
-//Implementa��o da Classe Pagamento
+//Implementação da Classe Pagamento
 void Pagamento::setPagamento(int novo_codigo, string nova_data, int novo_percentual, string novo_estado){
     codigo.setCodigo(novo_codigo);
     data.setData(nova_data);
@@ -23,4 +23,31 @@ tuple<int, string, int, string> Pagamento::getPagamento(){
     return make_tuple(f_codigo, f_data, f_percentual, f_estado);
 }
 
+
+//Implementação da classe Titulo;
+void Titulo::setTitulo(string novo_codigo, string novo_nome, string novo_setor, string nova_emissao, string novo_vencimento, int novo_valor) {
+    codigo.setCodigoT(novo_codigo);
+    emissor.setNome(novo_nome);
+    setor.setSetor(novo_setor);
+    emissao.setData(nova_emissao);
+    vencimento.setData(novo_vencimento);
+    valor.setDinheiro(novo_valor);
+}
+
+vector<string> Titulo::getTitulo() {
+    vector<string> resp;
+    string g_codigo = codigo.getCodigoT();
+    string g_emissor = emissor.getNome();
+    string g_setor = setor.getSetor();
+    string g_emissao = emissao.getData();
+    string g_vencimento = vencimento.getData();
+    string g_valor = to_string(valor.getDinheiro());
+    resp.push_back(g_codigo);
+    resp.push_back(g_emissor);
+    resp.push_back(g_setor);
+    resp.push_back(g_emissao);
+    resp.push_back(g_vencimento);
+    resp.push_back(g_valor);
+    return resp;
+}
 
