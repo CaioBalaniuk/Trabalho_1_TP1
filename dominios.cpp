@@ -4,6 +4,7 @@
 #include <map>
 #include <stdexcept>
 #include <sstream>
+#include <algorithm>
 
 using namespace std;
 string alfabeto=("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
@@ -438,13 +439,12 @@ string Nome::getNome(){
     return nome;
 }
 
-
 //Implementacao metodos Setor
 Setor::Setor(string a=" "){
     area=a;
 }
 
-void Setor::setSetor(string consultadearea) { 
+void Setor::setSetor(string consultadearea) {
         if (consultadearea == "Agricultura" || consultadearea == "Construção civil" || consultadearea == "Energia" || consultadearea == "Finanças" || consultadearea == "Imobiliário" || consultadearea == "Papel e celulose" || consultadearea == "Pecuária" || consultadearea == "Química e petroquímica" || consultadearea == "Metalurgia e siderurgia" || consultadearea == "Mineração") {
             area = consultadearea;
         } else {
@@ -462,11 +462,11 @@ Estado::Estado(string a= " "){
     status=a;
 }
 
-void Estado::setEstado(string statusConfirmation){ 
+void Estado::setEstado(string statusConfirmation){
         if (statusConfirmation == "Previsto" || statusConfirmation == "Liquidado" || statusConfirmation == "Inadimplente") {
             status = statusConfirmation;
         } else {
-            throw invalid_argument("Erro: Estado Inexistente!");
+            throw invalid_argument("Estado invalido.");
         }
 }
 
@@ -476,11 +476,11 @@ string Estado::getEstado(){
 
 
 //Implementacao metodos Dinheiro
-Dinheiro::Dinheiro(float a){
+Dinheiro::Dinheiro(float a=0){
     valor=a;
 }
 
-void Dinheiro::setDinheiro(float $) { 
+void Dinheiro::setDinheiro(float $) {
         if ($ >= 0 && $ <= 1000000) {  // o if verifica se o valor está dentro do intervalo permitido (0 a 1000000) e atribui o valor se estiver dentro do intervalo
             valor = $;
         } else {
@@ -488,8 +488,9 @@ void Dinheiro::setDinheiro(float $) {
         }
 }
 
-float Dinheiro::getDinheiro() { 
+float Dinheiro::getDinheiro() {
         return valor;
 }
+
 
 
