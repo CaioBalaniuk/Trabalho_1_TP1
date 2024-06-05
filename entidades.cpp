@@ -51,3 +51,18 @@ vector<string> Titulo::getTitulo() {
     return resp;
 }
 
+
+//Implementação da Classe Conta
+void Conta::setConta(string novo_cpf, string nova_nome, string novo_senha){
+    cpf.setCPF(novo_cpf);
+    nome.setNome(nova_nome);
+    senha.setSenha(novo_senha);
+}
+
+tuple<string, string, string> Conta::getConta(){
+    string f_cpf = cpf.getCPF();
+    string f_nome = nome.getNome();
+    string f_senha = senha.getSenha();
+
+    return make_tuple(f_cpf, f_nome, f_senha);
+}
