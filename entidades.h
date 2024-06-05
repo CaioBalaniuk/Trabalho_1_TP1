@@ -34,4 +34,16 @@ class Titulo {
 
 };
 
+//Declaração da Classe Conta
+class Conta {
+private:
+    CPF cpf;
+    Nome nome;
+    Senha senha;
+
+public:
+    void setConta(string novo_cpf, string nova_nome, string novo_senha);
+    tuple<string, string, string> getConta();
+
+};
 #endif // ENTIDADES_H_INCLUDED
