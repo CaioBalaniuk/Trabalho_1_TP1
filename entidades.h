@@ -3,6 +3,7 @@
 #include "dominios.h"
 #include <string>
 #include <tuple>
+#include <vector>
 
 using namespace std;
 
@@ -47,3 +48,4 @@ public:
 
 };
 #endif // ENTIDADES_H_INCLUDED
+
