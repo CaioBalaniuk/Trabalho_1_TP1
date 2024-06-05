@@ -4,7 +4,6 @@
 #include <map>
 #include <stdexcept>
 #include <sstream>
-#include <algorithm>
 
 using namespace std;
 string alfabeto=("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
@@ -46,7 +45,8 @@ void CodigoTitulo::setCodigoT(string b){
         if (b.length()==11){ //checando se o codigo possui o número necessario de caracteres
             for (char i : b){
                 contador=0;
-                for (int k=0;k<(alfabeto.length());k+=1){  // checando se todos os caracteres são letras maiusculas
+                int len = alfabeto.length();
+                for (int k=0;k<len;k+=1){  // checando se todos os caracteres são letras maiusculas
                     if (i==alfabeto[k]){
                         break;
                     }
@@ -55,7 +55,7 @@ void CodigoTitulo::setCodigoT(string b){
                     };
                     contador+=1;
                 };
-                if (contador==(alfabeto.length())){
+                if (contador==(len)){
                     juri=false;
                     break;
                 };
@@ -141,7 +141,8 @@ void CPF::setCPF(string c){
     if (c.length()!=14){         //verificando se o a string colocada possuí o numero minimo de caracteres a fim de ser valída
         juri=false;
     };
-    for (int i=0;i<c.length();i+=1){
+    int l = c.length();
+    for (int i=0;i<l;i+=1){
         if (i==11){
             if (c[i]!='-'){
                 juri=false;      //verificando se o '-' está no lugar certo
@@ -222,7 +223,8 @@ bool Data::verifica_mes() {
         if (i1 == mes) {
             return false;
         }
-    };
+    }
+    return false;
 }
 
 bool Data::verifica_dia() {   // verifica se o dia é valido com base seu mês e o ano;
@@ -439,6 +441,7 @@ string Nome::getNome(){
     return nome;
 }
 
+
 //Implementacao metodos Setor
 Setor::Setor(string a=" "){
     area=a;
@@ -466,7 +469,7 @@ void Estado::setEstado(string statusConfirmation){
         if (statusConfirmation == "Previsto" || statusConfirmation == "Liquidado" || statusConfirmation == "Inadimplente") {
             status = statusConfirmation;
         } else {
-            throw invalid_argument("Estado invalido.");
+            throw invalid_argument("Erro: Estado Inexistente!");
         }
 }
 
@@ -476,8 +479,8 @@ string Estado::getEstado(){
 
 
 //Implementacao metodos Dinheiro
-Dinheiro::Dinheiro(float a=0){
-    valor=a;
+Dinheiro::Dinheiro(){
+    valor=0;
 }
 
 void Dinheiro::setDinheiro(float $) {
@@ -491,6 +494,5 @@ void Dinheiro::setDinheiro(float $) {
 float Dinheiro::getDinheiro() {
         return valor;
 }
-
 
 
