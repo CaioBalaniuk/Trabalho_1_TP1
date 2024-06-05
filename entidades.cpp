@@ -2,20 +2,22 @@
 #include "entidades.h"
 #include <string>
 #include <stdexcept>
+#include <vector>
+#include <tuple>
 
 
 using namespace std;
 
 //Implementação da Classe Pagamento
 void Pagamento::setPagamento(int novo_codigo, string nova_data, int novo_percentual, string novo_estado){
-    codigo.setCodigo(novo_codigo);
+    codigo.setCodigoP(novo_codigo);
     data.setData(nova_data);
     percentual.setPercentual(novo_percentual);
     estado.setEstado(novo_estado);
 }
 
 tuple<int, string, int, string> Pagamento::getPagamento(){
-    int f_codigo = codigo.getCodigo();
+    int f_codigo = codigo.getCodigoP();
     string f_data = data.getData();
     int f_percentual = percentual.getPercentual();
     string f_estado = estado.getEstado();
