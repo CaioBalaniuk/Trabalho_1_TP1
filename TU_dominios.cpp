@@ -3,7 +3,7 @@
 #include <string>
 
 using namespace std;
-//Implementa��o metodos da classe TU_CodigoP;
+//Implementação metodos da classe TU_CodigoP;
 
 void TU_CodigoP::caso_sucesso() {
     try {
@@ -28,4 +28,46 @@ void TU_CodigoP::caso_falha() {
 void TU_CodigoP::run() {
     caso_falha();
     caso_sucesso();
+}
+
+
+//Implementação da Classe de Teste para o Percentual
+void TUPercentual::inicio(){
+    ponteiro_percentual = new Percentual();
+    estado = sucesso;
+}
+
+void TUPercentual::fim(){
+    delete ponteiro_percentual;
+}
+
+void TUPercentual::caso_sucesso(){
+    try{
+        ponteiro_percentual->setPercentual(valido);
+        if (ponteiro_percentual->getPercentual()==valido){
+            cout << "SUCESSO - CODIGO: " << valido << " e valido." <<endl;
+        } else {
+            estado = falha;
+        }
+    } catch (invalid_argument e) {
+        estado = falha;
+    }
+}
+
+void TUPercentual::caso_falha(){
+    try {
+        ponteiro_percentual->setPercentual(invalido);
+        estado = falha;
+    } catch(invalid_argument e){
+        cout << "FALHA - CODIGO: " << invalido << " e invalido." << endl;
+
+    }
+
+}
+
+void TUPercentual::run(){
+    inicio();
+    caso_sucesso();
+    caso_falha();
+    fim();
 }
