@@ -71,3 +71,87 @@ void TUPercentual::run(){
     caso_falha();
     fim();
 }
+
+
+//Implementação da Classe de Teste para o Nome
+void TUNome::inicio(){
+    ponteiro_nome = new Nome();
+    estado = sucesso;
+}
+
+void TUNome::fim(){
+    delete ponteiro_nome;
+}
+
+void TUNome::caso_sucesso(){
+    try{
+        ponteiro_nome->setNome(valido);
+        if (ponteiro_nome->getNome()==valido){
+            cout << "SUCESSO - CODIGO: " << valido << " e valido." <<endl;
+        } else {
+            estado = falha;
+        }
+    } catch (invalid_argument e) {
+        estado = falha;
+    }
+}
+
+void TUNome::caso_falha(){
+    try {
+        ponteiro_nome->setNome(invalido);
+        estado = falha;
+    } catch(invalid_argument e){
+        cout << "FALHA - CODIGO: " << invalido << " e invalido." << endl;
+
+    }
+
+}
+
+void TUNome::run(){
+    inicio();
+    caso_sucesso();
+    caso_falha();
+    fim();
+}
+
+
+//Implementação da Classe de Teste para o Senha
+void TUSenha::inicio(){
+    ponteiro_senha = new Senha();
+    estado = sucesso;
+}
+
+void TUSenha::fim(){
+    delete ponteiro_senha;
+}
+
+void TUSenha::caso_sucesso(){
+    try{
+        ponteiro_senha->setSenha(valido);
+        if (ponteiro_senha->getSenha()==valido){
+            cout << "SUCESSO - CODIGO: " << valido << " e valido." <<endl;
+        } else {
+            estado = falha;
+        }
+    } catch (invalid_argument e) {
+        estado = falha;
+    }
+}
+
+void TUSenha::caso_falha(){
+    try {
+        ponteiro_senha->setSenha(invalido);
+        estado = falha;
+    } catch(invalid_argument e){
+        cout << "FALHA - CODIGO: " << invalido << " e invalido." << endl;
+
+    }
+
+}
+
+void TUSenha::run(){
+    inicio();
+    caso_sucesso();
+    caso_falha();
+    fim();
+}
