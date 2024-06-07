@@ -42,4 +42,49 @@ public:
     void run();
 };
 
+//Declaração da Classe de Teste para o Nome
+class TUNome{
+private:
+    const string static valido = "Pedro Raul";
+    const string static invalido = "MOISES";
+
+    Nome* ponteiro_nome;
+
+    bool estado;
+
+    void incio();
+    void caso_sucesso();
+    void caso_falha();
+    void fim();
+
+public:
+    const static bool sucesso = true;
+    const static bool falha = false;
+
+    void run();
+};
+
+
+//Declaração da Classe de Teste para o Senha
+class TUSenha{
+private:
+    const string static valido = "738294";
+    const string static invalido = "123456";
+
+    Senha* ponteiro_senha;
+
+    bool estado;
+
+    void incio();
+    void caso_sucesso();
+    void caso_falha();
+    void fim();
+
+public:
+    const static bool sucesso = true;
+    const static bool falha = false;
+
+    void run();
+};
+
 #endif // TU_DOMINIOS_H_INCLUDED
