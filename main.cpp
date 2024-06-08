@@ -3,36 +3,41 @@
 #include <string>
 #include "dominios.h"
 #include "dominios.cpp"
+#include "entidades.h"
+#include "entidades.cpp"
+#include "TU_dominios.h"
+#include "TU_dominios.cpp"
+#include <vector>
 using namespace std;
 
 
 //teste classes
 
 int main(){
-
+/*
     CodigoPagamento teste ;
     int a;
     cin>>a;
     try{
         teste.setCodigoP(a);
-        cout<<"Seu codigoPag e: "<<teste.getCodigoP()<<endl;
+        cout<<"Seu codigo Pagamento e: "<<teste.getCodigoP()<<endl;
     } catch (const invalid_argument& e){
         cout<<e.what()<<endl;
     };
 
-    
+
     CodigoTitulo teste1;
     string b;
     cin>>b;
     try{
         teste1.setCodigoT(b);
-        cout<<"Seu codigoTit e: "<<teste1.getCodigoT()<<endl;
+        cout<<"Seu codigoT e: "<<teste1.getCodigoT()<<endl;
     } catch (const invalid_argument& e){
         cout<<e.what()<<endl;
     };
 
-    
-    CPF teste2;
+
+    /*CPF teste2;
     string c;
     cin>>c;
     try{
@@ -42,7 +47,7 @@ int main(){
         cout<<e.what()<<endl;
     };
 
-    
+
     Data teste3;
     string d;
     cin>>d;
@@ -53,7 +58,7 @@ int main(){
         cout<<e.what()<<endl;
     };
 
-    
+
     Dinheiro teste4;
     float e;
     cin>>e;
@@ -64,7 +69,7 @@ int main(){
         cout<<e.what()<<endl;
     };
 
-    
+
     Estado teste5;
     string f;
     cin>>f;
@@ -118,9 +123,28 @@ int main(){
         cout<<"O setor e: "<<teste9.getSetor()<<endl;
     } catch(const invalid_argument& e){
         cout<<e.what()<<endl;
-    };
+    };*/
+    TU_CodigoP teste1;
+    teste1.run();
+
+    TU_CodigoT teste2;
+    teste2.runn();
+
+    TU_CPF teste3;
+    teste3.run();
+
+    TU_DATA teste4;
+    teste4.run();
+
+    TUPercentual teste5;
+    teste5.run();
+
+    TUNome teste6;
+    teste6.run();
+
+    TUSenha teste7;
+    teste7.run();
 
     return 0;
 
 }
-
