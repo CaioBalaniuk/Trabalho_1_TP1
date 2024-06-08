@@ -1,6 +1,7 @@
 #ifndef TU_DOMINIOS_H_INCLUDED
 #define TU_DOMINIOS_H_INCLUDED
 #include "dominios.h"
+#include <vector>
 
 
 using namespace std;
@@ -14,9 +15,46 @@ private:
     void caso_sucesso();
     void caso_falha();
 public:
-    const static bool SUCESSO = true;
-    const static bool FALHA = false;
     void run();
+};
+
+//Declaração da Classe de Teste para o Codigo Titulo
+class TU_CodigoT {
+private:
+    const string VALOR_VALIDO = "CDB12039875";
+    const string VALOR_INVALIDO = "LKC44222588";
+    CodigoTitulo codigo;
+    void casos_sucesso();
+    void casos_falha();
+public:
+    void runn();
+};
+
+//Declaração da Classe de Teste para CPF;
+class TU_CPF {
+private:
+    const string VALOR_VALIDO = "123.456.789-09";
+    const string VALOR_INVALIDO = "123.456.789-11";
+    CPF cpf;
+    void caso_sucesso();
+    void caso_falha();
+public:
+    void run();
+};
+
+//Declaração da Classe de Teste para Data;
+class TU_DATA {
+private:
+    const string VALOR_VALIDO = "29-02-2024";
+    const string VALOR_INVALIDO = "31-04-2099";
+    Data* data;
+    void caso_sucesso();
+    void caso_falha();
+    void start();
+    void fim();
+public:
+    void run();
+
 };
 
 
@@ -45,14 +83,14 @@ public:
 //Declaração da Classe de Teste para o Nome
 class TUNome{
 private:
-    const string static valido = "Pedro Raul";
-    const string static invalido = "MOISES";
+    const string valido = "Pedro Raul";
+    const string invalido = "M0ISES";
 
     Nome* ponteiro_nome;
 
     bool estado;
 
-    void incio();
+    void inicio();
     void caso_sucesso();
     void caso_falha();
     void fim();
@@ -68,14 +106,14 @@ public:
 //Declaração da Classe de Teste para o Senha
 class TUSenha{
 private:
-    const string static valido = "738294";
-    const string static invalido = "123456";
+    const string valido = "738294";
+    const string invalido = "123456";
 
     Senha* ponteiro_senha;
 
     bool estado;
 
-    void incio();
+    void inicio();
     void caso_sucesso();
     void caso_falha();
     void fim();
