@@ -118,7 +118,7 @@ private:
     float valor; // declarando a variavel do valor do dinheiro que será em float porque é um valor em reais
 
 public:
-    Dinheiro(float);
+    Dinheiro();
     void setDinheiro(float $); // o método é atribuir um valor caso ele esteja entre 0 e 1000000 e retornar um erro caso venha uma exceção, e para isso se deve utilizar o método set
     float getDinheiro(); // o método get é usado para retornar um valor no output
 };
