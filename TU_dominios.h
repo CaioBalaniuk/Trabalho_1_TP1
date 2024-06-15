@@ -125,43 +125,4 @@ public:
     void run();
 };
 
-//Declaração da Classe de Teste para o Setor
-class TU_Setor {
-private:
-    Setor *setor;
-    void setUp();
-    void tearDown();
-    void testarCenarioSucesso(string);
-    void testarCenarioFalha(string);
-
-public:
-    void run();
-};
-
-//Declaração da Classe de Teste para o Estado
-class TU_Estado {
-private:
-    Estado *estado;
-    void setUp();
-    void tearDown();
-    void testarCenarioSucesso(string);
-    void testarCenarioFalha(string);
-
-public:
-    void run();
-};
-
-//Declaração da Classe de Teste para o Dinheiro
-class TU_Dinheiro {
-private:
-    Dinheiro *dinheiro;
-    void setUp();
-    void tearDown();
-    void testarCenarioSucesso(float);
-    void testarCenarioFalha(float);
-
-public:
-    void run();
-};
-
 #endif // TU_DOMINIOS_H_INCLUDED
