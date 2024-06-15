@@ -27,7 +27,7 @@ tuple<int, string, int, string> Pagamento::getPagamento(){
 
 
 //Implementação da classe Titulo;
-void Titulo::setTitulo(string novo_codigo, string novo_nome, string novo_setor, string nova_emissao, string novo_vencimento, int novo_valor) {
+void Titulo::setTitulo(string novo_codigo, string novo_nome, string novo_setor, string nova_emissao, string novo_vencimento, float novo_valor) {
     codigo.setCodigoT(novo_codigo);
     emissor.setNome(novo_nome);
     setor.setSetor(novo_setor);
