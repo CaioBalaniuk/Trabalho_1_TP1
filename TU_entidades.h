@@ -1,10 +1,6 @@
 #ifndef TU_ENTIDADES_H_INCLUDED
 #define TU_ENTIDADES_H_INCLUDED
-#include "dominios.h"
-#include "dominios.cpp"
 #include "entidades.h"
-#include "entidades.cpp"
-
 using namespace std;
 
 //Declaração da classe de testes da entidade Pagamento
@@ -42,5 +38,22 @@ public:
     void run();
 };
 
+//Declaração da classe de testes da entidade Titulo
+class TU_Titulo {
+private:
+    string CODIGO_T_VALIDO = "LCA01455786";
+    string NOME_VALIDO = "Giuseppe Camole";
+    string SETOR_VALIDO = "Papel e celulose";
+    string DATA_EMISSAO_VALIDA = "15-06-2024";
+    string DATA_VENCIMENTO_VALIDA = "31-12-2025";
+    float VALOR_VALIDO = 999999;
+    Titulo* titulo;
+    void start();
+    void fim();
+    void caso_sucesso();
+public:
+    void run();
+
+};
 
 #endif // TU_ENTIDADES_H_INCLUDED
