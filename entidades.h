@@ -1,6 +1,7 @@
 #ifndef ENTIDADES_H_INCLUDED
 #define ENTIDADES_H_INCLUDED
 #include "dominios.h"
+#include "dominios.cpp"
 #include <string>
 #include <tuple>
 #include <vector>
@@ -16,6 +17,7 @@ private:
     Estado estado;
 
 public:
+    Pagamento() {int a=0;};
     void setPagamento(int novo_codigo, string nova_data, int novo_percentual, string novo_estado);
     tuple<int, string, int, string> getPagamento();
 };
@@ -30,7 +32,7 @@ class Titulo {
         Data vencimento;
         Dinheiro valor;
     public:
-        void setTitulo (string, string, string, string, string, int);
+        void setTitulo (string, string, string, string, string, float);
         vector<string> getTitulo();
 
 };
