@@ -7,7 +7,7 @@
 
 using namespace std;
 
-//Declara��o da classe de testes da entidade Pagamento
+//Declaração da classe de testes da entidade Pagamento
 class TUPagamento{
 private:
     int codigo_valido = 12345678;
@@ -25,6 +25,22 @@ public:
     void run();
 };
 
+//Declaração da classe de testes da entidade Conta
+class TU_Conta {
+private:
+    const string VALOR_VALIDO_CPF = "123.456.789-09";
+    const string VALOR_VALIDO_NOME = "John Doe";
+    const string VALOR_VALIDO_SENHA = "946287";
+
+    Conta *conta;
+
+    void setUp();
+    void tearDown();
+    void testarSucesso();
+
+public:
+    void run();
+};
 
 
 #endif // TU_ENTIDADES_H_INCLUDED
