@@ -362,7 +362,7 @@ public:
 
 
 /**
- * @brief Classe de teste de unidade para a classe Setor (Feito por: 231025190).
+ * @brief Classe de teste de unidade para a classe Setor (Feito por: 231036292).
  * 
  * Esta classe testa os métodos da classe Setor, verificando a validação de setores.
  */
@@ -406,7 +406,7 @@ public:
 
 
 /**
- * @brief Classe de teste de unidade para a classe Estado (Feito por: 231025190).
+ * @brief Classe de teste de unidade para a classe Estado (Feito por: 231036292).
  * 
  * Esta classe testa os métodos da classe Estado, verificando a validação de estados.
  */
@@ -450,7 +450,7 @@ public:
 
 
 /**
- * @brief Classe de teste de unidade para a classe Dinheiro (Feito por: 231025190).
+ * @brief Classe de teste de unidade para a classe Dinheiro (Feito por: 231036292).
  * 
  * Esta classe testa os métodos da classe Dinheiro, verificando a validação de valores.
  */
